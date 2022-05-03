@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Product;
 use LaravelEasyRepository\Service;
 use App\Repositories\Interfaces\ProductRepositoryInterface;
 
@@ -18,5 +19,15 @@ class ProductService extends Service {
       $this->mainInterface = $mainInterface;
     }
 
-    // Define your custom methods :)
+    public function insertOrUpdateProduct(array $key, array $data) : Product
+    {
+		return $this->mainInterface->insertOrUpdateProduct(
+			$key, $data
+		);
+   }
+
+    public function insertProduct(array $data): Product
+    {
+        return $this->mainInterface->insertProduct($data);
+    }
 }

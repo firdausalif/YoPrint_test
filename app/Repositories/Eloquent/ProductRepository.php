@@ -20,5 +20,15 @@ class ProductRepository extends Eloquent implements ProductRepositoryInterface{
         $this->model = $model;
     }
 
-    // Write something awesome :)
+    public function insertOrUpdateProduct(array $key, array $data) : Product
+    {
+       return $this->model->updateOrCreate(
+            $key, $data
+       );
+    }
+
+    public function insertProduct(array $data): Product
+    {
+        return $this->model->create($data);
+    }
 }

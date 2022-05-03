@@ -3,15 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProductRequest;
-use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
+use App\Services\ProductService;
+use Illuminate\View\View;
 
 class ProductController extends Controller
 {
+    protected ProductService $mainService;
+
+    public function __construct(ProductService $mainService)
+    {
+        $this->mainService = $mainService;
+    }
+
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
     public function index()
     {
